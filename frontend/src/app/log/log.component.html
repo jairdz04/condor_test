@@ -1,0 +1,135 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card" style="background-color: #ccc;">
+                    <div  class="card-content" style="margin-top: -4%;">
+                            <form  novalidate="" class="ng-untouched ng-pristine ng-valid">
+                                <div  class="row">
+                                    <div  class="col-md-4">
+                                        <div  class="form-group form-black is-empty">
+                                            <label  class="control-label" style="color: #162044;"><strong>START</strong></label>
+                                            <input  class="form-control" [(ngModel)]="start" name="start" type="date">
+                                        </div>
+                                    </div>
+                                    <div  class="col-md-4">
+                                        <div  class="form-group form-black is-empty">
+                                            <label  class="control-label" style="color: #162044;"><strong>END</strong></label>
+                                            <input  class="form-control"  [(ngModel)]="end" name="end" type="date">
+                                        </div>
+                                    </div>
+                                    <div  class="col-md-2">
+                                        <div  class="form-group form-black is-empty">
+                                            <label  class="control-label" style="color: #162044;"><strong>STATE</strong></label>
+                                            <select class="form-control"  [(ngModel)]="state" name="state">
+                                                <option *ngFor="let st of states"> {{st.name}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div  class="col-md-2">
+                                        <div  class="form-group form-black is-empty">
+                                            <br>
+                                            <button  class="btn btn-success pull-rigth" type="submit" (click)="search()">{{btnName}}</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div  class="clearfix"></div>
+                            </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="col-md-12">
+                        <h6 class="pull-right">
+                            Total Average Response Time:  {{responseT}} Minutes
+                        </h6>
+                    </div>
+                    <div class="card-content table-responsive">
+                        <table class="table">
+                            <thead class="text-danger">
+                                <tr>
+                                    <!-- To sort data you must press click in the column title -->
+                                    <th>#</th>
+                                    <th (click)="sortData('cd_cebroker_state')">State Code  </th>
+                                    <th (click)="sortData('cd_cebroker_state')">Pro Code </th>
+                                    <th (click)="sortData('cd_profession')">Profession </th>
+                                    <th (click)="sortData('id_license')">License ID </th>
+                                    <th (click)="sortData('dt_end')">Cycle End Date </th>
+                                    <th (click)="sortData('id_client_nbr')">Client ID </th>
+                                    <th (click)="sortData('dt_Start_Log')">Start Log Date </th>
+                                    <th (click)="sortData('dt_end_log')">End Log Date </th>
+                                    <th (click)="sortData('cd_environment')">Environment </th>
+                                    <th (click)="sortData('cd_machine')">Machine </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let lg of logs| paginate: { itemsPerPage: 20, currentPage: p }; let i = index" [attr.data-index]="i" >
+                                    <td>{{i+1}}</td>
+                                    <td>{{lg.cd_cebroker_state}}</td>
+                                    <td>{{lg.pro_cde}}</td>
+                                    <td>{{lg.cd_profession}}</td>
+                                    <td>{{lg.id_license}}</td>
+                                    <td>{{lg.dt_end}}</td> 
+                                    <td>{{lg.id_client_nbr}}</td>
+                                    <td>{{lg.dt_Start_Log}}</td>
+                                    <td>{{lg.dt_end_log}}</td>
+                                    <td>{{lg.cd_environment}}</td>
+                                    <td>{{lg.cd_machine}}</td> 
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="col-md-12">
+                            <h3 *ngIf="flag">{{message}}</h3>
+                        </div>
+                        <pagination-controls class="my-pag pull-right" (pageChange)="p = $event"></pagination-controls>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div  class="card-content">
+                        <canvas baseChart
+                        [data]="lineChartData"
+                        [labels]="lineChartLabels"
+                        [options]="lineChartOptions"
+                        [chartType]="lineChartType"
+                        (chartHover)="chartHovered($event)"
+                        (chartClick)="chartClicked($event)"></canvas> 
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="card">
+                   <div  class="card-content">
+                            <canvas baseChart
+                            [datasets]="dataM"
+                            [labels]="labelsM"
+                            [options]="barChartOptions"
+                            [legend]="barChartLegend"
+                            [chartType]="barChartType"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="card">
+                    <div  class="card-content">
+                            <canvas baseChart
+                            [datasets]="dataC"
+                            [labels]="labelsC"
+                            [options]="barChartOptions"
+                            [legend]="barChartLegend"
+                            [chartType]="barChartType"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

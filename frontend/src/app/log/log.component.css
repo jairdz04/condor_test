@@ -1,0 +1,7 @@
+p{
+    font: size 100px;
+}
+
+.my-pag  /deep/ .ngx-pagination .current{
+    background:#162044;
+}
