@@ -1,4 +1,5 @@
 <h1>Documentation </h1>
+<p> Please, clone this repository using: git clone: https://github.com/jairdz04/condor_test</pr>
 
 <h2>Backend</h2> 
 <h3> Run project </h3>
