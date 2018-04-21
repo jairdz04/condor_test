@@ -44,7 +44,7 @@
 <p> <strong>NOTE: </strong> Scripts and queries were created using mysql </p>
 <p> cd database </p>
 <h3>Create database and tables</h3>
- <p> Copy and excecute the script that is on: script.sql</p>
+ <p> Copy and excecute the script that is in: script.sql</p>
 <h3> Run queries</h3>
  <p> Copy and excecute the queries that are in: queries.sql</p>
  
