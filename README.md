@@ -35,6 +35,7 @@
 <ol>
   <li>cd frontend</li>
   <li>Open a new terminal in this directory</li>
+  <li>Excecute: npm install angular-cli -g</li>
   <li>Excecute: npm install</li>
   <li>Excecute: npm start</li>
   <li>Visit your browser on localhost:(4200 || in console will appear the port number) </li>
