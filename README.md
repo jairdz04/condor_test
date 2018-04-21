@@ -4,6 +4,7 @@
 <h3> Run project </h3>
 <ol>
   <li>cd backend</li>
+  <li>Copy the .env file that was provided (in the root)</li>
   <li>Open a new terminal in this directory</li>
   <li>Excecute: npm install</li>
   <li>Excecute: node server.js</li>
